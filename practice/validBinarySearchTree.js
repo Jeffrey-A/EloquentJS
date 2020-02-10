@@ -63,3 +63,30 @@ function helper(node, lower, upper){
 
     return true
 }
+
+// Iterative Version
+
+function isValidBST_Iterative(root) {
+    //left, root, right
+    const stack = [];
+      
+    let inOrder = Number.MIN_SAFE_INTEGER;
+  
+    while (stack.length || root){
+        
+        while (root){
+            stack.push(root);
+            root = root.left
+        }
+        
+        root = stack.pop();
+        
+        if(root.val <= inOrder) return false;
+        
+        inOrder = root.val;
+        root = root.right;       
+    }  
+     
+     return true;
+   
+  };
