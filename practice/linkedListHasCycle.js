@@ -39,15 +39,14 @@ Explanation: There is no cycle in the linked list.
  * @return {boolean}
  */
 function hasCycle(head) {
-    let seem = false;
-    let values = new Map();
     
+    let nodes = new Map();
     while(head){
-        if(values.has(head)){
+        if(nodes.has(head)){
             return true;
         }
         
-        values.set(head, true) 
+        nodes.set(head, true) 
         head = head.next
     }
     
