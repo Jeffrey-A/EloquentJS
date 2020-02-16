@@ -25,7 +25,7 @@ rotate 2 steps to the right: [3,99,-1,-100]
  * @param {number} k
  * @return {void} Do not return anything, modify nums in-place instead.
  */
-var rotate = function(nums, k) {
+function rotate(nums, k) {
   if (k == 0) {
     return nums;
   }
@@ -43,4 +43,23 @@ var rotate = function(nums, k) {
     nums[0] = last;
   }
   return nums;
-};
+}
+
+// More efficient in terms of time
+
+function rotate2(nums, k) {
+  if (k == 0) {
+    return nums;
+  }
+  const temp = [];
+
+  let j = 0;
+
+  for (let i = 0; i < nums.length; i++) {
+    temp[(i + k) % nums.length] = nums[i];
+  }
+
+  for (let i = 0; i < temp.length; i++) {
+    nums[i] = temp[i];
+  }
+}
