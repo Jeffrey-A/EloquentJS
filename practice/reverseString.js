@@ -67,3 +67,29 @@ function reverseWords(s) {
 
   return ans;
 }
+
+// a little optimized O(1) for space
+
+function reverseWords2(s) {
+  
+    let ans = "";
+    s = s.trim();
+    let word = "";
+     
+    let i = 0, j = s.length - 1;
+     
+    while(i <= j) {
+        
+        if(s[i] != " "){
+            word+= s[i];
+        } else if (word && s[i] ==" "){
+           ans+= word + " ";
+           word = "";
+        } 
+        i++;
+    }
+    
+    ans+= word;
+     
+   return ans.split(" ").reverse().join(" ");
+ };
