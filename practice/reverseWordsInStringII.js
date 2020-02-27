@@ -37,3 +37,35 @@ function reverseWords(s) {
     s[i] = ans[i];
   }
 }
+
+// Follow up
+
+function reverseWords(s) {
+  if (s.length <= 1) {
+    return s;
+  }
+  reverse(0, s.length - 1, s);
+  console.log(s);
+  let start = 0,
+    end = 0;
+  while (start < s.length) {
+    while (end < s.length && s[end] != " ") {
+      end++;
+    }
+
+    reverse(start, end - 1, s);
+    end = end + 1;
+    start = end;
+  }
+}
+
+function reverse(start, end, s) {
+  while (start <= end) {
+    let first = s[start];
+    let last = s[end];
+    s[start] = last;
+    s[end] = first;
+    start++;
+    end--;
+  }
+}
